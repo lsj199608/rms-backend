@@ -39,6 +39,10 @@ dependencies {
 	implementation 'org.flywaydb:flyway-database-postgresql'
 }
 
+bootJar {
+	mainClass = 'rms.Rms'
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }

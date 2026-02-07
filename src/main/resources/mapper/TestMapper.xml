@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rms.dashboard.mapper.TestMapper">
+
+  <resultMap id="TestEntityResult" type="rms.dashboard.entity.TestEntity">
+    <id property="id" column="id" javaType="java.util.UUID"/>
+    <result property="code" column="code"/>
+    <result property="name" column="name"/>
+    <result property="createdAt" column="created_at"/>
+  </resultMap>
+
+  <select id="findAll" resultMap="TestEntityResult">
+    SELECT id, code, name, created_at
+    FROM test
+    ORDER BY created_at
+  </select>
+
+  <select id="findById" resultMap="TestEntityResult">
+    SELECT id, code, name, created_at
+    FROM test
+    WHERE id = #{id}
+  </select>
+
+  <select id="findByCode" resultMap="TestEntityResult">
+    SELECT id, code, name, created_at
+    FROM test
+    WHERE code = #{code}
+  </select>
+
+  <insert id="insert">
+    INSERT INTO test (id, code, name, created_at)
+    VALUES (gen_random_uuid(), #{code}, #{name}, now())
+    <selectKey keyProperty="id" resultType="java.util.UUID" order="AFTER">
+      SELECT id FROM test WHERE code = #{code}
+    </selectKey>
+  </insert>
+
+  <update id="update">
+    UPDATE test
+    SET code = #{code}, name = #{name}
+    WHERE id = #{id}
+  </update>
+
+  <delete id="deleteById">
+    DELETE FROM test WHERE id = #{id}
+  </delete>
+
+</mapper>
