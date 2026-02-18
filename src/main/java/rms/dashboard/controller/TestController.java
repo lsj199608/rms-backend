@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -55,5 +57,20 @@ public class TestController {
 	public ResponseEntity<Void> delete(@PathVariable UUID id) {
 		testService.deleteById(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@GetMapping("/tmpTest1/{id}")
+	public ResponseEntity<Map<String,String>> tmpTest1(@PathVariable int id){
+		Map<String, String> map = new HashMap<>();
+		map.put("test1","1");
+		map.put("test2","test");
+		map.put("test3","asdfasdf");
+		map.put("test4","AAA");
+		return ResponseEntity.ok(map);
+	}
+
+	@PostMapping("/tmpTest2")
+	public ResponseEntity<String> tmpTest2(@RequestBody Map<String, String> data){
+		return ResponseEntity.ok("asdfasdfasdfasdf");
 	}
 }

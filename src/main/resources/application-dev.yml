@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rms
+    username: postgres
+    password: postgre123
+    driver-class-name: org.postgresql.Driver
+flyway:
+  enabled: true
+  baseline-on-migrate: true
+
+cors:
+  allowed-origins: "http://localhost:5173"

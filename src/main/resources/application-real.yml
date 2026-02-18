@@ -1,0 +1,16 @@
+server:
+  port: 9090
+#운영용 파일(application-real.yml)에는 진짜 DB 비밀번호나 중요한 API 키가 들어갈 때가 많습니다.
+#그래서 실무에서는 이 파일만큼은 .gitignore에 등록해서 GitHub에 올리지 않거나,
+#쿠버네티스의 Secret 기능을 사용해 숨겨서 주입하기도 합니다.
+spring:
+  datasource:
+    url: jdbc:postgresql://리얼서버아이피:5432/rms
+    username: postgres
+    password: postgre123
+    driver-class-name: org.postgresql.Driver
+flyway:
+  enabled: true
+  baseline-on-migrate: true
+cors:
+  allowed-origins: "http://리얼서버주소"
