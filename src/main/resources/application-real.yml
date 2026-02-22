@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://리얼서버아이피:5432/rms
-    username: postgres
-    password: postgre123
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/rms}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgre123}
     driver-class-name: org.postgresql.Driver
   flyway:
     enabled: true
@@ -25,4 +25,4 @@ app:
       issuer: rms-backend
     cors:
       allowed-origins:
-        - https://리얼프론트도메인
+        - ${APP_SECURITY_CORS_ALLOWED_ORIGINS:http://localhost:9090}
