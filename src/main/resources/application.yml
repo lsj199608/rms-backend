@@ -6,3 +6,27 @@ spring:
     name: rms-backend
   profiles:
     active: dev
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+app:
+  security:
+    jwt:
+      # JWT HS256 비밀키(실서비스에서는 환경변수로 주입 권장)
+      secret: ${JWT_SECRET:changeme-dev-very-long-secret-at-least-32-chars}
+      access-token-expiration: 15m
+      refresh-token-expiration: 30d
+      access-token-name: access_token
+      refresh-token-name: refresh_token
+      # Next.js(브라우저)에서 credentials 요청 시 쿠키 전송 위해
+      # dev: Secure=false, SameSite=Lax 권장
+      # prod: Secure=true, SameSite=None (아래 application-real.yml 오버라이드)
+      cookie-secure: false
+      cookie-same-site: Lax
+      issuer: rms-backend
+    cors:
+      allowed-origins:
+        - http://localhost:5173
+        - http://127.0.0.1:5173
+        - http://localhost:3000

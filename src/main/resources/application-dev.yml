@@ -4,9 +4,17 @@ spring:
     username: postgres
     password: postgre123
     driver-class-name: org.postgresql.Driver
-flyway:
-  enabled: true
-  baseline-on-migrate: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    # 운영에서는 clean 금지. 로컬에서만 필요시 주석 해제해서 사용
+    clean-disabled: true
 
-cors:
-  allowed-origins: "http://localhost:5173"
+app:
+  security:
+    jwt:
+      # 개발에서는 안전하게 최소한의 예시 키
+      secret: ${JWT_SECRET:changeme-dev-very-long-secret-at-least-32-chars}
+      cookie-secure: false
+      cookie-same-site: Lax
