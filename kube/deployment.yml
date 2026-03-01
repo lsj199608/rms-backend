@@ -17,7 +17,7 @@ spec:
       containers:
         - name: rms-backend
           # GitHub Actions에서 이 이미지를 자동으로 업데이트할 것입니다.
-          image: kkukku0218/rms-backend:c3dfdfa93641147dd7fd4f32f9a169ab37c5c4ea
+          image: kkukku0218/rms-backend:2419c85d9fd4ead8db35e391924cec063614f1cc
           ports:
             - containerPort: 9090
           # DB 연결 정보나 기타 설정이 필요하면 아래 env에 추가하세요.
