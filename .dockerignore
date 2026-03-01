@@ -1,0 +1,39 @@
+# 빌드 아티팩트 및 임시 파일
+bin/
+build/
+out/
+target/
+*.class
+*.jar
+*.war
+
+# Gradle 및 Maven 관련 임시 파일
+.gradle/
+.m2/
+.mvn/
+wrapper/
+
+# IDE 설정 파일 (IntelliJ, Eclipse, VS Code)
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# 운영체제 관련 파일
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log
+
+# 소스 제어
+.git/
+.gitignore
+
+# 민감한 정보 (보안을 위해 필요시 추가)
+*.env
+*.properties
+*.yml
+# (주의: application.yml을 도커 빌드 시 직접 복사해야 한다면 위 항목에서 제외하세요)
