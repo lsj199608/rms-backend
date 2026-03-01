@@ -15,6 +15,10 @@ public class SecurityCorsProperties {
 		"http://localhost:*",
 		"http://127.0.0.1:*",
 		"https://localhost:*",
-		"https://127.0.0.1:*"
+		"https://127.0.0.1:*",
+		"https://*.sslip.io*",
+		"http://*.sslip.io*",
+		"https://*.nip.io*",
+		"http://*.nip.io*"
 	);
 }
