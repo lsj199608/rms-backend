@@ -24,18 +24,18 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"
-            - name: DB_USERNAME  # yml의 ${DB_USERNAME}과 매칭
+            - name: SPRING_DATASOURCE_USERNAME  # yml의 ${SPRING_DATASOURCE_USERNAME}과 매칭
               valueFrom:
                 secretKeyRef:
                   name: rms-db-secret
                   key: username
-            - name: DB_PASSWORD  # yml의 ${DB_PASSWORD}과 매칭
+            - name: SPRING_DATASOURCE_PASSWORD  # yml의 ${SPRING_DATASOURCE_PASSWORD}과 매칭
               valueFrom:
                 secretKeyRef:
-                name: rms-db-secret
-                key: password
-            - name: DB_URL  # yml의 ${DB_PASSWORD}과 매칭
+                  name: rms-db-secret
+                  key: password
+            - name: SPRING_DATASOURCE_URL  # yml의 ${SPRING_DATASOURCE_URL}과 매칭
               valueFrom:
                 secretKeyRef:
-                name: rms-db-secret
-                key: url
+                  name: rms-db-secret
+                  key: url
