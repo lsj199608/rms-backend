@@ -17,7 +17,7 @@ spec:
       containers:
         - name: rms-backend
           # GitHub Actions에서 이 이미지를 자동으로 업데이트할 것입니다.
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/rms-backend:latest
+          image: kkukku0218/rms-backend:ff25cff8585a8e68641ae83c63baa928699aa5e5
           imagePullPolicy: Always
           ports:
             - containerPort: 9090
