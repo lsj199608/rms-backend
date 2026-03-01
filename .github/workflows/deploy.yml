@@ -42,7 +42,7 @@ jobs:
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
           manifests: |
-            kube/deployment.yaml
-            kube/service.yaml
+            kube/deployment.yml
+            kube/service.yml
           images: |
             ${{ secrets.DOCKERHUB_USERNAME }}/rms-backend:latest
