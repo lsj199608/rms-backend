@@ -39,3 +39,8 @@ spec:
                 secretKeyRef:
                   name: rms-db-secret
                   key: url
+            - name: APP_SECURITY_CORS_ALLOWED_ORIGINS
+              valueFrom:
+                secretKeyRef:
+                  name: rms-db-secret
+                  key: cors
