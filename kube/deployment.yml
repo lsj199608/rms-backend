@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rms-backend-deployment
+  labels:
+    app: rms-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rms-backend
+  template:
+    metadata:
+      labels:
+        app: rms-backend
+    spec:
+      containers:
+        - name: rms-backend
+          # GitHub Actions에서 이 이미지를 자동으로 업데이트할 것입니다.
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/rms-backend:latest
+          ports:
+            - containerPort: 9090
+          # DB 연결 정보나 기타 설정이 필요하면 아래 env에 추가하세요.
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: DB_USERNAME  # yml의 ${DB_USERNAME}과 매칭
+              valueFrom:
+                secretKeyRef:
+                  name: rms-db-secret
+                  key: username
+            - name: DB_PASSWORD  # yml의 ${DB_PASSWORD}과 매칭
+              valueFrom:
+                secretKeyRef:
+                name: rms-db-secret
+                key: password
+            - name: DB_URL  # yml의 ${DB_PASSWORD}과 매칭
+              valueFrom:
+                secretKeyRef:
+                name: rms-db-secret
+                key: url
