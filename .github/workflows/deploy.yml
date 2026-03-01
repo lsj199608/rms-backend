@@ -38,7 +38,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rms-backend:latest
 
 
-      # 실무 핵심: kube 배포 파일의 이미지 주소를 새 버전으로 수정하고 다시 커밋함
+      # 실무 핵심: kube 배포 파일의 이미지 주소를 새 버전으로 수정하고 다시 커밋함!
       - name: Update kube Image Tag
         run: |
           sed -i "s|image:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/rms-backend:${{ github.sha }}|g" kube/deployment.yml
