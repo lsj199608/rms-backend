@@ -34,8 +34,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile # Dockerfile 위치
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rms-backend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rms-backend:${{ github.sha }}
 
 
       # 실무 핵심: kube 배포 파일의 이미지 주소를 새 버전으로 수정하고 다시 커밋함!
