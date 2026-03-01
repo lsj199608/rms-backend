@@ -2,38 +2,6 @@ server:
   port: 9090
 
 spring:
-  application:
-    name: rms-backend
-  jpa:
-    hibernate:
-      ddl-auto: validate
-
-app:
-  security:
-    jwt:
-      # JWT HS256 비밀키(실서비스에서는 환경변수로 주입 권장)
-      secret: ${JWT_SECRET:changeme-dev-very-long-secret-at-least-32-chars}
-      access-token-expiration: 15m
-      refresh-token-expiration: 30d
-      access-token-name: access_token
-      refresh-token-name: refresh_token
-      # Next.js(브라우저)에서 credentials 요청 시 쿠키 전송 위해
-      # dev: Secure=false, SameSite=Lax 권장
-      # prod: Secure=true, SameSite=None (아래 application-real.yml 오버라이드)
-      cookie-secure: false
-      cookie-same-site: Lax
-      issuer: rms-backend
-    cors:
-      allowed-origins:
-        - http://localhost:5173
-        - http://127.0.0.1:5173
-        - http://localhost:3000
-        - http://34.60.168.32
-  halla11694@cloudshell:~/rms-backend/src/main/resources (project-d6bcc60b-1410-4794-b9b)$ cat application-real.yml
-server:
-  port: 9090
-
-spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/rms}
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
