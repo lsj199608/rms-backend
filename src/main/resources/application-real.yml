@@ -27,4 +27,4 @@ app:
       issuer: rms-backend
     cors:
       allowed-origins:
-        - ${APP_SECURITY_CORS_ALLOWED_ORIGINS}
+        - ${APP_SECURITY_CORS_ALLOWED_ORIGINS:http://34.70.234.179}
