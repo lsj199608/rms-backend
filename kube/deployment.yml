@@ -44,3 +44,8 @@ spec:
                 secretKeyRef:
                   name: rms-db-secret
                   key: cors
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: rms-jwt-secret
+                  key: jwt
